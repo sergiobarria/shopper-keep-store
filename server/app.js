@@ -4,7 +4,10 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const products = require('./data/products');
+const { notFound, errorHandler } = require('./middleware/error.middleware');
+
+// Import routes
+const productRoutes = require('./routes/product.routes');
 
 // Create express app
 const app = express();
@@ -20,19 +23,13 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('tiny'));
 }
 
-// Routes
-app.get('/api/products', (req, res) => {
-  res.status(200).json(products);
-});
-
-app.get('/api/products/:id', (req, res) => {
-  const { id } = req.params;
-  const product = products.find((p) => p._id === id);
-
-  res.status(200).json(product);
-});
-
 app.use(express.json());
 // app.use(express.static(path.join(__dirname, 'public')))
+
+// Routes
+app.use('/api/products', productRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;

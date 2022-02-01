@@ -5,11 +5,14 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 require('colors');
 
 const app = require('./app');
+const { mongoConnect } = require('./services/mongoClient');
 
 const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
 
 async function startServer() {
+  await mongoConnect();
+
   server.listen(PORT, () => {
     // eslint-disable-next-line
     console.log(

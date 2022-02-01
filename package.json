@@ -15,7 +15,9 @@
     "lint": "eslint '**/*.{js,tsx,ts,tsx}'",
     "typescript": "cd client && yarn tsc",
     "prepare": "husky install",
-    "pre-commit": "yarn lint-staged && yarn typescript"
+    "pre-commit": "yarn lint-staged && yarn typescript",
+    "seed:import": "cd server/utils && node seeder.js -i",
+    "seed:delete": "cd server/utils && node seeder.js -d"
   },
   "keywords": [],
   "dependencies": {},
