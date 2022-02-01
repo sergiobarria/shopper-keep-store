@@ -1,4 +1,4 @@
-export interface IProduct {
+export interface Product {
   _id: string;
   name: string;
   image: string;
@@ -9,4 +9,5 @@ export interface IProduct {
   countInStock: number;
   rating: number;
   numReviews: number;
+  reviews: string[];
 }

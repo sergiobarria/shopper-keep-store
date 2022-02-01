@@ -22,17 +22,17 @@
     "no-shadow": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
     "no-param-reassign": "off",
     "consistent-return": "off",
     "react/react-in-jsx-scope": "off",
     "global-require": "off",
     "no-underscore-dangle": "off",
     "react/no-array-index-key": "off",
-    "react/jsx-filename-extension": [
-      1,
-      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-    ],
+    "default-param-last": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "prefer-destructuring": ["warn", { "object": true, "array": false }],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
+    // "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
+    "@typescript-eslint/no-unused-vars": ["error"]
   }
 }

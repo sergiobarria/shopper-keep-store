@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Rating from './Rating';
-import { IProduct } from '../types';
+import { Product } from '../types';
 
 interface IProps {
-  product: IProduct;
+  product: Product;
 }
 
 export default function ProductCard({ product }: IProps) {

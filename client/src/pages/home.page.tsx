@@ -2,38 +2,37 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import axios from 'axios';
+import { useActions } from '../hooks/useActions';
+import { useSelector } from '../hooks/useSelector';
 import ProductCard from '../components/ProductCard';
-import { IProduct } from '../types';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
 
 export default function HomePage() {
-  const [products, setProducts] = React.useState<IProduct[]>([]);
+  const { loading, error, products } = useSelector((state) => state.productList);
+  const { listProducts } = useActions();
 
   React.useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get('http://localhost:8000/api/products');
-
-      if (data) {
-        setProducts(data);
-      }
-    };
-
-    fetchProducts();
+    listProducts();
   }, []);
 
   return (
     <section>
       <h2 className='mb-3'>Latest Products</h2>
-      <div
-        className={clsx(
-          'grid grid-cols-1 gap-6',
-          'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
-        )}
-      >
-        {products.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))}
-      </div>
+      {loading && <Loader />}
+      {error && <Message msg={error} />}
+      {products && (
+        <div
+          className={clsx(
+            'grid grid-cols-1 gap-6',
+            'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+          )}
+        >
+          {products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
