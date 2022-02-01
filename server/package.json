@@ -1,0 +1,24 @@
+{
+  "name": "shopper-keep-api",
+  "description": "Shopper Keep backend server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "Sergio Barria",
+  "license": "MIT",
+  "scripts": {
+    "watch": "nodemon server.js",
+    "start": "node server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.1.9",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

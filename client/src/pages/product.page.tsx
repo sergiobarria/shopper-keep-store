@@ -2,15 +2,29 @@ import React from 'react';
 
 import { Link, useParams } from 'react-router-dom';
 import { IoArrowBackCircleSharp } from 'react-icons/io5';
+import axios from 'axios';
 import clsx from 'clsx';
 
-import products from '../assets/products';
 import Rating from '../components/Rating';
 import { IProduct } from '../types';
 
 export default function ProductPage() {
   const { id } = useParams();
-  const product = products.find((p: IProduct) => p._id === id);
+  const [product, setProduct] = React.useState<IProduct | undefined>();
+
+  React.useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(
+        `http://localhost:8000/api/products/${id}`
+      );
+
+      if (data) {
+        setProduct(data);
+      }
+    };
+
+    fetchProduct();
+  }, []);
 
   return (
     <>
