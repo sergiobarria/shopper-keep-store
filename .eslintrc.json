@@ -25,6 +25,9 @@
     "no-param-reassign": "off",
     "consistent-return": "off",
     "react/react-in-jsx-scope": "off",
+    "global-require": "off",
+    "no-underscore-dangle": "off",
+    "react/no-array-index-key": "off",
     "react/jsx-filename-extension": [
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }

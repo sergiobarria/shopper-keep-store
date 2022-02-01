@@ -1,3 +1,14 @@
+import { BrowserRouter } from 'react-router-dom';
+
+import Layout from './components/layout/Layout';
+import Router from './routes';
+
 export default function App() {
-  return <h1>Welcome to Shopper Kepp</h1>;
+  return (
+    <BrowserRouter>
+      <Layout>
+        <Router />
+      </Layout>
+    </BrowserRouter>
+  );
 }

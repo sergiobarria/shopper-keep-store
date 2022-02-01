@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* Gray variants */
+  --white: #fff;
+  --gray-50: #fafafa;
+  --gray-100: #f7f7f7;
+  --gray-200: #eaeaea;
+  --gray-300: #999;
+  --gray-400: #888;
+  --gray-500: #666;
+  --gray-600: #444;
+  --gray-700: #333;
+  --gray-800: #222;
+  --gray-900: #111;
+}
+
 @layer base {
   h1 {
     @apply text-5xl md:text-7xl;
@@ -9,5 +24,9 @@
 
   h2 {
     @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
   }
 }
