@@ -9,4 +9,13 @@ export default defineConfig({
   build: {
     outDir: path.join(__dirname, '../server/public'),
   },
+  server: {
+    proxy: {
+      '/api/products': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 });

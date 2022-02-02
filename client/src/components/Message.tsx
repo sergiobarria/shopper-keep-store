@@ -1,9 +1,17 @@
 import React from 'react';
 
-export default function Message({ msg }: { msg: string }) {
+import clsx from 'clsx';
+
+interface Props {
+  msg: string;
+  textStyles: string;
+  bgStyles: string;
+}
+
+export default function Message({ msg, textStyles, bgStyles }: Props) {
   return (
-    <div className='p-3 bg-red-300'>
-      <h3 className='text-red-700'>{msg}</h3>
+    <div className={clsx('p-3', bgStyles && bgStyles)}>
+      <h3 className={textStyles}>{msg}</h3>
     </div>
   );
 }

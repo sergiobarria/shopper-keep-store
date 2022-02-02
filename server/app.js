@@ -2,7 +2,7 @@
 
 const express = require('express');
 const morgan = require('morgan');
-const cors = require('cors');
+// const cors = require('cors');
 
 const { notFound, errorHandler } = require('./middleware/error.middleware');
 
@@ -13,11 +13,11 @@ const productRoutes = require('./routes/product.routes');
 const app = express();
 
 // App middleware
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000',
+//   })
+// );
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('tiny'));

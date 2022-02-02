@@ -30,6 +30,8 @@
     "no-underscore-dangle": "off",
     "react/no-array-index-key": "off",
     "default-param-last": "off",
+    "react/no-unescaped-entities": "off",
+    "no-case-declarations": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "prefer-destructuring": ["warn", { "object": true, "array": false }],
     // "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]

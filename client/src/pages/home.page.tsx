@@ -18,9 +18,9 @@ export default function HomePage() {
 
   return (
     <section>
-      <h2 className='mb-10'>Latest Products</h2>
+      <h2 className='mb-10 tracking-widest'>Latest Products</h2>
       {loading && <Loader />}
-      {error && <Message msg={error} />}
+      {error && <Message msg={error} textStyles='text-red-700' bgStyles='bg-red-300' />}
       {products && (
         <div
           className={clsx(
