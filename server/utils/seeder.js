@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 require('colors');
@@ -8,9 +9,15 @@ const { mongoConnect } = require('../services/mongoClient');
 const User = require('../models/user.model');
 const Product = require('../models/product.model');
 const Order = require('../models/order.model');
-const products = require('../data/products');
+// const products = require('../data/products');
 const users = require('../data/users');
 
+// Read JSON file
+const products = JSON.parse(
+  fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf-8')
+);
+
+// Import data into DB
 const importData = async () => {
   try {
     await mongoConnect();
@@ -39,6 +46,7 @@ const importData = async () => {
   }
 };
 
+// Delete ALL data from DB
 const deleteData = async () => {
   try {
     await mongoConnect();

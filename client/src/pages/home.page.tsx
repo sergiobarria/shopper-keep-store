@@ -18,7 +18,7 @@ export default function HomePage() {
 
   return (
     <section>
-      <h2 className='mb-3'>Latest Products</h2>
+      <h2 className='mb-10'>Latest Products</h2>
       {loading && <Loader />}
       {error && <Message msg={error} />}
       {products && (

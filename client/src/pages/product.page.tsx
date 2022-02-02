@@ -36,11 +36,13 @@ export default function ProductPage() {
       {loading && <Loader />}
       {error && <Message msg={error} />}
       {product && (
-        <div className='grid grid-cols-12 p-4 mt-8 border'>
-          <div className='col-span-6 p-4'>
-            <div className='w-full h-full bg-red-500'>Image</div>
+        <div className='grid grid-cols-2 p-4 mt-8 border'>
+          <div className='p-4'>
+            <div className='w-full h-full'>
+              <img src={product?.image} alt={product?.name} />
+            </div>
           </div>
-          <div className='col-span-6 p-4'>
+          <div className='flex flex-col p-4'>
             <h3>{product?.name}</h3>
             <Rating value={product?.rating!} text={`${product?.numReviews} reviews`} />
             <p className='text-gray-500'>
@@ -58,7 +60,7 @@ export default function ProductPage() {
               type='button'
               className={clsx(
                 'text-white text-sm uppercase bg-gray-900 px-4 py-2',
-                'hover:bg-gray-700 transition-colors duration-200'
+                'hover:bg-gray-700 transition-colors duration-200 mt-auto'
               )}
             >
               Add To Cart
