@@ -20,7 +20,7 @@ export default function HomePage() {
     <section>
       <h2 className='mb-10 tracking-widest'>Latest Products</h2>
       {loading && <Loader />}
-      {error && <Message msg={error} textStyles='text-red-700' bgStyles='bg-red-300' />}
+      {error && <Message msg={error} type='error' />}
       {products && (
         <div
           className={clsx(

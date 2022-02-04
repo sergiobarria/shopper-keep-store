@@ -5,14 +5,23 @@ import clsx from 'clsx';
 import { HiShoppingCart } from 'react-icons/hi';
 import { BsFillPersonFill } from 'react-icons/bs';
 
+import Dropdown from '../Dropdown';
 import { useSelector } from '../../hooks/useSelector';
+import { useActions } from '../../hooks/useActions';
 
 import logo from '../../assets/img/logo.svg';
 
 export default function Header() {
+  const [showDropdown, setShowDropdown] = React.useState<boolean>(false);
   const { cartItems } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.userLogin);
+  const { logout } = useActions();
 
   const totalItemsInCart = cartItems.reduce((sum, { qty }) => sum + qty, 0);
+
+  function logoutHandler() {
+    logout();
+  }
 
   return (
     <header className='px-4 bg-gray-900 lg:px-0'>
@@ -44,16 +53,25 @@ export default function Header() {
                 </span>
               )}
             </Link>
-            <Link
-              to='/sign-in'
-              className={clsx(
-                'flex items-center text-sm text-gray-100 px-4 py-2',
-                'transition-colors hover:text-gray-400 duration-200'
-              )}
-            >
-              <BsFillPersonFill className='mr-1 text-lg' />
-              SIGN IN
-            </Link>
+            {user ? (
+              <Dropdown
+                showDropdown={showDropdown}
+                setShowDropdown={setShowDropdown}
+                name={user.name}
+                logoutHandler={logoutHandler}
+              />
+            ) : (
+              <Link
+                to='/login'
+                className={clsx(
+                  'flex items-center text-sm text-gray-100 px-4 py-2',
+                  'transition-colors hover:text-gray-400 duration-200'
+                )}
+              >
+                <BsFillPersonFill className='mr-1 text-lg' />
+                SIGN IN
+              </Link>
+            )}
           </div>
         </nav>
       </div>

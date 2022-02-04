@@ -35,7 +35,7 @@ export default function ProductPage() {
       <ReturnBtn route='/' />
 
       {loading && <Loader />}
-      {error && <Message msg={error} textStyles='text-red-700' bgStyles='bg-red-300' />}
+      {error && <Message msg={error} type='error' />}
       {product && (
         <div className='grid grid-cols-1 p-4 mt-8 border md:grid-cols-2'>
           <div className='p-4'>

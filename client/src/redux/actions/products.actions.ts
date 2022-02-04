@@ -1,30 +1,40 @@
 import { ActionType } from '../action-types';
 import { Product } from '../../types';
 
-export interface ProductListRequestAction {
+interface ProductListRequestAction {
   type: ActionType.PRODUCT_LIST_REQUEST;
 }
 
-export interface ProductListSucessAction {
+interface ProductListSucessAction {
   type: ActionType.PRODUCT_LIST_SUCCESS;
   payload: Product[];
 }
 
-export interface ProductListFailAction {
+interface ProductListFailAction {
   type: ActionType.PRODUCT_LIST_FAIL;
   payload: string;
 }
 
-export interface ProductDetailsRequestAction {
+interface ProductDetailsRequestAction {
   type: ActionType.PRODUCT_DETAILS_REQUEST;
 }
 
-export interface ProductDetailsSuccessAction {
+interface ProductDetailsSuccessAction {
   type: ActionType.PRODUCT_DETAILS_SUCCESS;
   payload: Product;
 }
 
-export interface ProductDetailsFailAction {
+interface ProductDetailsFailAction {
   type: ActionType.PRODUCT_DETAILS_FAIL;
   payload: string;
 }
+
+export type ProductsActions =
+  | ProductListRequestAction
+  | ProductListSucessAction
+  | ProductListFailAction;
+
+export type ProductDetailsActions =
+  | ProductDetailsRequestAction
+  | ProductDetailsSuccessAction
+  | ProductDetailsFailAction;

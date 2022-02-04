@@ -20,3 +20,18 @@ export interface CartItem {
   countInStock: number;
   qty: number;
 }
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+  token: string;
+}
+
+export interface UserRegisterInfo {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
