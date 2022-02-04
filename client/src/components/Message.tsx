@@ -13,10 +13,10 @@ export default function Message({ msg, type }: Props) {
   return (
     <div
       className={clsx(
-        'p-3 mb-3',
-        type === 'error' && 'text-red-700 bg-red-300',
-        type === 'info' && 'text-blue-700 bg-blue-300',
-        type === 'success' && 'text-green-700 bg-green-300'
+        'mb-3 p-3',
+        type === 'error' && 'bg-red-300 text-red-700',
+        type === 'info' && 'bg-blue-300 text-blue-700',
+        type === 'success' && 'bg-green-300 text-green-700'
       )}
     >
       <h3 className='text-lg'>{msg}</h3>

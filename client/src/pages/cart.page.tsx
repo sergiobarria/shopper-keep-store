@@ -40,7 +40,7 @@ export default function CartPage() {
                     <div className='hidden h-full w-44 md:block'>
                       <img src={item.image} alt={item.name} />
                     </div>
-                    <div className='flex flex-col w-full ml-3'>
+                    <div className='ml-3 flex w-full flex-col'>
                       <div className='flex items-center justify-between'>
                         <Link to={`/products/${item.id}`}>
                           <h4 className='font-semibold hover:text-gray-700'>
@@ -52,7 +52,7 @@ export default function CartPage() {
                       {item.countInStock > 0 && (
                         <p className='mb-4 text-sm text-green-600'>In Stock</p>
                       )}
-                      <div className='flex items-center mt-auto space-x-6'>
+                      <div className='mt-auto flex items-center space-x-6'>
                         <QtySelector
                           value={item.qty}
                           onChangeHandler={(e) => {
@@ -79,7 +79,7 @@ export default function CartPage() {
         {/* Checkout card */}
         <div className='col-span-8 border md:col-span-4'>
           <div className='p-4'>
-            <h3 className='text-gray-700 uppercase'>
+            <h3 className='uppercase text-gray-700'>
               subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
             </h3>
             <p className='text-lg text-gray-700'>

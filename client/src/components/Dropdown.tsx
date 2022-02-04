@@ -19,35 +19,43 @@ export default function Dropdown({
   name,
 }: Props) {
   return (
-    <>
-      <button
-        id='dropdownBtn'
-        type='button'
-        className={clsx('flex items-center text-sm ml-2 text-white')}
-        onClick={() => setShowDropdown(!showDropdown)}
-      >
-        {name.toUpperCase()}
-        <IoIosArrowDown className='ml-1' />
-      </button>
-      <div
-        id='dropdown'
-        className={clsx(
-          'absolute flex flex-col items-start w-40 py-2 px-3 text-sm space-y-2',
-          'text-gray-900 bg-white border right-32 top-16',
-          !showDropdown && 'hidden'
-        )}
-      >
-        <Link to='/profile' className='w-full p-1 hover:bg-gray-100'>
-          Profile
-        </Link>
+    <div className='relative inline-block text-left'>
+      <div>
         <button
           type='button'
-          onClick={logoutHandler}
-          className='w-full p-1 text-left hover:bg-gray-100'
+          className={clsx(
+            'inline-flex w-full items-center justify-center px-4 py-2 uppercase',
+            'text-sm font-medium text-gray-200 transition-colors duration-200 hover:text-gray-400'
+          )}
+          onClick={() => setShowDropdown(!showDropdown)}
         >
-          Logout
+          {name}
+          <IoIosArrowDown />
         </button>
       </div>
-    </>
+
+      <div
+        className={clsx(
+          !showDropdown && 'hidden',
+          'absolute right-0 mt-2 w-32 origin-top-right bg-white'
+        )}
+      >
+        <div>
+          <Link
+            to='/profile'
+            className='block py-1 pl-3 text-sm font-thin hover:bg-gray-100'
+          >
+            Profile
+          </Link>
+          <button
+            type='button'
+            className='block w-full py-1 pl-3 text-left text-sm font-thin hover:bg-gray-100'
+            onClick={logoutHandler}
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }

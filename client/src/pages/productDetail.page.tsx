@@ -16,7 +16,7 @@ export default function ProductPage() {
   const { id } = useParams();
   const { listProductDetails, addToCart } = useActions();
 
-  const { loading, error, product } = useSelector((state) => state.productDetails);
+  const { loading, error, product } = useSelector((state) => state.product.details);
 
   React.useEffect(() => {
     if (id) {
@@ -37,9 +37,9 @@ export default function ProductPage() {
       {loading && <Loader />}
       {error && <Message msg={error} type='error' />}
       {product && (
-        <div className='grid grid-cols-1 p-4 mt-8 border md:grid-cols-2'>
+        <div className='mt-8 grid grid-cols-1 border p-4 md:grid-cols-2'>
           <div className='p-4'>
-            <div className='w-full h-full'>
+            <div className='h-full w-full'>
               <img src={product?.image} alt={product?.name} />
             </div>
           </div>
@@ -58,7 +58,7 @@ export default function ProductPage() {
             <h4 className='my-2 text-2xl text-gray-800'>${product?.price}</h4>
 
             {product?.countInStock > 0 && (
-              <div className='flex items-center mb-6 space-x-2'>
+              <div className='mb-6 flex items-center space-x-2'>
                 <p className='text-sm text-gray-500'>Quantity:</p>
                 <QtySelector
                   value={qty}
@@ -71,8 +71,8 @@ export default function ProductPage() {
               type='button'
               disabled={product?.countInStock <= 0}
               className={clsx(
-                'text-white text-sm uppercase bg-gray-900 px-4 py-2',
-                'hover:bg-gray-700 transition-colors duration-200 mt-auto',
+                'bg-gray-900 px-4 py-2 text-sm uppercase text-white',
+                'mt-auto transition-colors duration-200 hover:bg-gray-700',
                 'disabled:cursor-not-allowed disabled:bg-gray-300'
               )}
               onClick={addToCartHandler}

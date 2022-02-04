@@ -1,6 +1,6 @@
-import { CartItem } from '../../types';
-import { ActionType } from '../action-types';
-import { CartActions } from '../actions';
+import { CartItem } from '../../../types';
+import { ActionType } from '../../action-types';
+import { CartActions } from '../../actions';
 
 interface CartState {
   cartItems: CartItem[];

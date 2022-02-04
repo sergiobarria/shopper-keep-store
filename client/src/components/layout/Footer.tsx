@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer className='flex justify-center mt-auto'>
-      <div className='container flex justify-center max-w-screen-lg py-8 border-t'>
+    <footer className='mt-auto flex justify-center'>
+      <div className='container flex max-w-screen-lg justify-center border-t py-8'>
         <p className='text-sm text-gray-500'>
           Shopper Keep &copy; Copyright {new Date().getFullYear()}
         </p>

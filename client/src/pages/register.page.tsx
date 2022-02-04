@@ -15,7 +15,7 @@ import { UserRegisterInfo } from '../types';
 
 export default function RegisterPage() {
   const { register: registerUser } = useActions();
-  const { loading, error, user } = useSelector((state) => state.userRegister);
+  const { loading, error, user } = useSelector((state) => state.user.register);
   const navigate = useNavigate();
   const location = useLocation();
   const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -58,7 +58,7 @@ export default function RegisterPage() {
                   id='name'
                   placeholder='Enter your name'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.name && 'ring-1 ring-red-500'
                   )}
                   {...register('name')}
@@ -80,7 +80,7 @@ export default function RegisterPage() {
                   id='email'
                   placeholder='Enter your email'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.email && 'ring-1 ring-red-500'
                   )}
                   {...register('email')}
@@ -103,7 +103,7 @@ export default function RegisterPage() {
                   type='password'
                   placeholder='Enter your password'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.password && 'ring-1 ring-red-500'
                   )}
                   {...register('password')}
@@ -126,7 +126,7 @@ export default function RegisterPage() {
                   type='password'
                   placeholder='Confirm your password'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.name && 'ring-1 ring-red-500'
                   )}
                   {...register('confirmPassword')}
@@ -142,8 +142,8 @@ export default function RegisterPage() {
             <button
               type='submit'
               className={clsx(
-                'text-white bg-gray-900 px-4 py-2',
-                'hover:bg-gray-700 transition-colors duration-200'
+                'bg-gray-900 px-4 py-2 text-white',
+                'transition-colors duration-200 hover:bg-gray-700'
               )}
             >
               Sign Up

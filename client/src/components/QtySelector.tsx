@@ -13,7 +13,7 @@ export default function QtySelector({ value, onChangeHandler, stock }: Props) {
   return (
     <div className='relative inline-flex'>
       <MdKeyboardArrowDown
-        className={clsx('absolute top-[0.65rem] right-2 pointer-events-none', 'text-2xl')}
+        className={clsx('pointer-events-none absolute top-[0.65rem] right-2', 'text-2xl')}
       />
       <select
         name='qty'
