@@ -1090,6 +1090,11 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
+react-handle-outside-click@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-handle-outside-click/-/react-handle-outside-click-1.0.0.tgz#811119688ccb5f7114b20fe412547b581c6795a2"
+  integrity sha512-4ZN4dH2/tXMSyA0Cc9CkzvRhpcgikI3VzeyOAnJqZONPMlivtMSaulfd+z9GENlcXJNMoKYTv3qnGxPBDya5+Q==
+
 react-hook-form@^7.25.3:
   version "7.25.3"
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.25.3.tgz#1475fd52398e905e1f6d88835f96aaa1144635c3"

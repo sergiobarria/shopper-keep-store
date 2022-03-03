@@ -19,7 +19,7 @@ export default function CartPage() {
   }
 
   function handleCheckout() {
-    navigate('/login?redirect=shipping');
+    navigate('/shipping');
   }
 
   return (

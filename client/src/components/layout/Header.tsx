@@ -54,14 +54,15 @@ export default function Header() {
               )}
             </Link>
             {/* Sign in button */}
-            {user ? (
+            {user && (
               <Dropdown
-                name={user.name}
+                name={user?.name}
                 showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
                 logoutHandler={logoutHandler}
               />
-            ) : (
+            )}
+            {!user && (
               <Link
                 to='/login'
                 className={clsx(

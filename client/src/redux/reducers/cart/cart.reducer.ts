@@ -1,13 +1,15 @@
-import { CartItem } from '../../../types';
+import { CartItem, ShippingData } from '../../../types';
 import { ActionType } from '../../action-types';
 import { CartActions } from '../../actions';
 
 interface CartState {
   cartItems: CartItem[];
+  shippingAddress?: ShippingData | {};
 }
 
 const cartInitialState = {
   cartItems: [],
+  shippingAddress: {},
 };
 
 export const cartReducer = (
@@ -49,6 +51,8 @@ export const cartReducer = (
           item.id === action.payload.id ? { ...item, qty: action.payload.qty } : item
         ),
       };
+    case ActionType.CART_SAVE_SHIPPING_ADDRESS:
+      return { ...state, shippingAddress: action.payload };
     default:
       return state;
   }

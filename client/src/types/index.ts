@@ -12,15 +12,6 @@ export interface Product {
   reviews: string[];
 }
 
-export interface CartItem {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  countInStock: number;
-  qty: number;
-}
-
 export interface User {
   id: string;
   name: string;
@@ -40,4 +31,21 @@ export interface UserState {
   loading?: boolean;
   user: User | undefined;
   error?: string | null;
+}
+
+export interface ShippingData {
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+export interface CartItem {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  countInStock: number;
+  qty: number;
+  // shippingAddress?: ShippingData;
 }
