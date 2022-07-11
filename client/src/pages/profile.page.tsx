@@ -14,9 +14,9 @@ import { UserRegisterInfo } from '../types';
 
 export default function ProfilePage() {
   const { getUserDetails, updateUserProfile } = useActions();
-  const { loading, error, user } = useSelector((state) => state.userDetails);
-  const { user: userInfo } = useSelector((state) => state.userLogin);
-  const { success } = useSelector((state) => state.userUpdateProfile);
+  const { loading, error, user } = useSelector((state) => state.user.details);
+  const { user: userInfo } = useSelector((state) => state.user.login);
+  const { success } = useSelector((state) => state.user.update);
   const navigate = useNavigate();
   const {
     reset,
@@ -48,7 +48,7 @@ export default function ProfilePage() {
   return (
     <div className='grid gap-6 md:grid-cols-12'>
       <div className='md:col-span-3'>
-        <h2 className='mb-6 text-2xl tracking-wider uppercase'>user profile</h2>
+        <h2 className='mb-6 text-2xl uppercase tracking-wider'>user profile</h2>
         {loading && <Loader />}
         {error && <Message msg={error} type='error' />}
         {success && <Message msg='Profile Updated' type='success' />}
@@ -65,7 +65,7 @@ export default function ProfilePage() {
                   id='name'
                   placeholder='Enter your name'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.name && 'ring-1 ring-red-500'
                   )}
                   {...register('name')}
@@ -87,7 +87,7 @@ export default function ProfilePage() {
                   id='email'
                   placeholder='Enter your email'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.email && 'ring-1 ring-red-500'
                   )}
                   {...register('email')}
@@ -110,7 +110,7 @@ export default function ProfilePage() {
                   type='password'
                   placeholder='Enter your password'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.password && 'ring-1 ring-red-500'
                   )}
                   {...register('password')}
@@ -133,7 +133,7 @@ export default function ProfilePage() {
                   type='password'
                   placeholder='Confirm your password'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.name && 'ring-1 ring-red-500'
                   )}
                   {...register('confirmPassword')}
@@ -149,8 +149,8 @@ export default function ProfilePage() {
             <button
               type='submit'
               className={clsx(
-                'text-white bg-gray-900 px-4 py-2',
-                'hover:bg-gray-700 transition-colors duration-200'
+                'bg-gray-900 px-4 py-2 text-white',
+                'transition-colors duration-200 hover:bg-gray-700'
               )}
             >
               Update

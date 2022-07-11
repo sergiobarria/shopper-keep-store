@@ -14,8 +14,7 @@ export default function index() {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/products/:id' element={<ProductPage />} />
-      <Route path='/cart/:id?' element={<CartPage />} />
-      <Route path='/cart/*' element={<CartPage />} />
+      <Route path='/cart' element={<CartPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/profile' element={<ProfilePage />} />

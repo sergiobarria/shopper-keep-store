@@ -1,3 +1,3 @@
-export * from './products.actionCreators';
-export * from './cart.actionCreators';
-export * from './user.actionCreators';
+export * from './product';
+export * from './cart';
+export * from './user';

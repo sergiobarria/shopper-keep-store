@@ -14,7 +14,7 @@ import logo from '../../assets/img/logo.svg';
 export default function Header() {
   const [showDropdown, setShowDropdown] = React.useState<boolean>(false);
   const { cartItems } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.userLogin);
+  const { user } = useSelector((state) => state.user.login);
   const { logout } = useActions();
 
   const totalItemsInCart = cartItems.reduce((sum, { qty }) => sum + qty, 0);
@@ -24,10 +24,10 @@ export default function Header() {
   }
 
   return (
-    <header className='px-4 bg-gray-900 lg:px-0'>
+    <header className='bg-gray-900 px-4 lg:px-0'>
       <div className='container max-w-screen-lg'>
         <nav className='flex items-center justify-between py-4'>
-          <div className='w-48 h-full'>
+          <div className='h-full w-48'>
             <Link to='/'>
               <img src={logo} alt='shopper keep logo' />
             </Link>
@@ -36,8 +36,8 @@ export default function Header() {
             <Link
               to='/cart'
               className={clsx(
-                'relative flex items-center text-sm px-4 py-2 text-gray-100',
-                'transition-colors hover:text-gray-400 duration-200'
+                'relative flex items-center px-4 py-2 text-sm text-gray-100',
+                'transition-colors duration-200 hover:text-gray-400'
               )}
             >
               <HiShoppingCart className='mr-1 text-lg' />
@@ -45,27 +45,28 @@ export default function Header() {
               {cartItems.length > 0 && (
                 <span
                   className={clsx(
-                    'absolute flex items-center justify-center top-1 right-2 w-4',
-                    'text-xs text-white bg-red-500 rounded-full'
+                    'absolute top-1 right-2 flex w-4 items-center justify-center',
+                    'rounded-full bg-red-500 text-xs text-white'
                   )}
                 >
                   {totalItemsInCart}
                 </span>
               )}
             </Link>
+            {/* Sign in button */}
             {user ? (
               <Dropdown
+                name={user.name}
                 showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
-                name={user.name}
                 logoutHandler={logoutHandler}
               />
             ) : (
               <Link
                 to='/login'
                 className={clsx(
-                  'flex items-center text-sm text-gray-100 px-4 py-2',
-                  'transition-colors hover:text-gray-400 duration-200'
+                  'flex items-center px-4 py-2 text-sm text-gray-100',
+                  'transition-colors duration-200 hover:text-gray-400'
                 )}
               >
                 <BsFillPersonFill className='mr-1 text-lg' />

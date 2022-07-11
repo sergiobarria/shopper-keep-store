@@ -12,7 +12,7 @@ interface IProps {
 
 export default function Rating({ value, text, className }: IProps) {
   return (
-    <div className={clsx('flex items-center my-2 space-x-1', className && className)}>
+    <div className={clsx('my-2 flex items-center space-x-1', className && className)}>
       {[...Array(5)].map((_: undefined, index: number) => {
         if (value >= index + 1) {
           return <BsStarFill key={`Star ${index}`} className='text-yellow-500' />;

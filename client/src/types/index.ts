@@ -35,3 +35,9 @@ export interface UserRegisterInfo {
   password: string;
   confirmPassword: string;
 }
+
+export interface UserState {
+  loading?: boolean;
+  user: User | undefined;
+  error?: string | null;
+}

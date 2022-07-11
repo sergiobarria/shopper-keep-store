@@ -10,7 +10,7 @@ export default function ReturnBtn({ route }: { route: string }) {
       to={route}
       className={clsx(
         'flex items-center text-gray-700',
-        'hover:text-gray-300 transition-colors duration-200'
+        'transition-colors duration-200 hover:text-gray-300'
       )}
     >
       <IoArrowBackCircleSharp className='mr-1 text-xl' />

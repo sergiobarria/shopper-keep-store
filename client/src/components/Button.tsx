@@ -17,8 +17,8 @@ export default function Button({
       type='button'
       disabled={disabled}
       className={clsx(
-        'text-white w-full text-sm uppercase bg-gray-900 px-4 py-2',
-        'hover:bg-gray-700 transition-colors duration-200 mt-auto',
+        'w-full bg-gray-900 px-4 py-2 text-sm uppercase text-white',
+        'mt-auto transition-colors duration-200 hover:bg-gray-700',
         'disabled:cursor-not-allowed disabled:bg-gray-300'
       )}
       onClick={onClick}

@@ -7,12 +7,12 @@ import reducers from './reducers';
 const cartItems = localStorage.getItem('cartItems');
 const cartItemsFromStorage = cartItems ? JSON.parse(cartItems) : [];
 
-const user = localStorage.getItem('user');
-const userInfoFromStorage = user ? JSON.parse(user) : null;
+const userInfo = localStorage.getItem('user');
+const userInfoFromStorage = userInfo ? JSON.parse(userInfo) : null;
 
 const initialState = {
   cart: { cartItems: cartItemsFromStorage },
-  userLogin: { user: userInfoFromStorage },
+  user: { login: { user: userInfoFromStorage } },
 };
 
 const middleware = [thunk];

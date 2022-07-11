@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 
 export default function HomePage() {
-  const { loading, error, products } = useSelector((state) => state.productList);
+  const { loading, error, products } = useSelector((state) => state.product.list);
   const { listProducts } = useActions();
 
   React.useEffect(() => {

@@ -19,7 +19,7 @@ interface UserLoginInfo {
 
 export default function LoginPage() {
   const { login } = useActions();
-  const { loading, error, user } = useSelector((state) => state.userLogin);
+  const { loading, error, user } = useSelector((state) => state.user.login);
   const location = useLocation();
   const navigate = useNavigate();
   const redirect = location.search ? location.search.split('=')[1] : '/';
@@ -61,7 +61,7 @@ export default function LoginPage() {
                   id='email'
                   placeholder='Enter your email'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.email && 'ring-1 ring-red-500'
                   )}
                   {...register('email')}
@@ -82,7 +82,7 @@ export default function LoginPage() {
                   type='password'
                   placeholder='Enter your password'
                   className={clsx(
-                    'border-0 bg-gray-200 p-3 font-thin text-sm',
+                    'border-0 bg-gray-200 p-3 text-sm font-thin',
                     errors.password && 'ring-1 ring-red-500'
                   )}
                   {...register('password')}
@@ -95,8 +95,8 @@ export default function LoginPage() {
             <button
               type='submit'
               className={clsx(
-                'text-white bg-gray-900 px-4 py-2',
-                'hover:bg-gray-700 transition-colors duration-200'
+                'bg-gray-900 px-4 py-2 text-white',
+                'transition-colors duration-200 hover:bg-gray-700'
               )}
             >
               Sign In
