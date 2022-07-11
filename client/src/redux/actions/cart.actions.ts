@@ -1,4 +1,4 @@
-import { CartItem } from '../../types';
+import { CartItem, ShippingData } from '../../types';
 import { ActionType } from '../action-types';
 
 interface AddItemToCartAction {
@@ -19,7 +19,13 @@ interface AdjustQtyAction {
   };
 }
 
+interface CartSaveShippingAddress {
+  type: ActionType.CART_SAVE_SHIPPING_ADDRESS;
+  payload: ShippingData;
+}
+
 export type CartActions =
   | AddItemToCartAction
   | RemoveItemFromCartAction
-  | AdjustQtyAction;
+  | AdjustQtyAction
+  | CartSaveShippingAddress;

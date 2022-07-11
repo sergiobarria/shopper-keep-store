@@ -20,11 +20,11 @@ interface UserLoginInfo {
 export default function LoginPage() {
   const { login } = useActions();
   const { loading, error, user } = useSelector((state) => state.user.login);
-  const location = useLocation();
   const navigate = useNavigate();
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const location = useLocation();
+  // @ts-ignore
+  const from = location.state?.from?.pathname || '/';
   const {
-    reset,
     register,
     handleSubmit,
     formState: { errors },
@@ -32,15 +32,14 @@ export default function LoginPage() {
 
   React.useEffect(() => {
     if (user) {
-      navigate(redirect, { replace: true });
+      navigate(from, { replace: true });
     }
-  }, [user, redirect]);
+  }, [user]);
 
   async function submitHandler(formData: UserLoginInfo) {
     const { email, password } = formData;
 
     login(email, password);
-    reset();
   }
 
   return (

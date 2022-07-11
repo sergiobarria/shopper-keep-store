@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 import { IoIosArrowDown } from 'react-icons/io';
+import { useOutsideClick } from 'react-handle-outside-click';
 
 interface Props {
   showDropdown: boolean;
   setShowDropdown: React.Dispatch<React.SetStateAction<boolean>>;
   logoutHandler: React.MouseEventHandler<HTMLButtonElement>;
-  name: string;
+  name: string | undefined;
 }
 
 export default function Dropdown({
@@ -18,8 +19,16 @@ export default function Dropdown({
   logoutHandler,
   name,
 }: Props) {
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const handleOutsideClick = () => {
+    setShowDropdown(false);
+  };
+
+  useOutsideClick(ref, handleOutsideClick);
+
   return (
-    <div className='relative inline-block text-left'>
+    <div className='relative inline-block text-left' ref={ref}>
       <div>
         <button
           type='button'
@@ -59,3 +68,9 @@ export default function Dropdown({
     </div>
   );
 }
+
+// const clickOutsideConfig = {
+//   handleClickOutside: () => handleClickOutside
+// }
+
+// export default onClickOutside(Dropdown, clickOutsideConfig)

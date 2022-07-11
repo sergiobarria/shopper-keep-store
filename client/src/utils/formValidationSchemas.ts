@@ -27,3 +27,10 @@ export const updateProfileFormSchema = yup.object().shape({
   password: yup.string().optional(),
   confirmPassword: yup.string().oneOf([yup.ref('password')], 'Passwords should match'),
 });
+
+export const shippingFormSchema = yup.object().shape({
+  address: yup.string().required('Please add an address'),
+  city: yup.string().required('Please add a city'),
+  postalCode: yup.string().required('Please add a postal code'),
+  country: yup.string().required('Please select a country'),
+});
