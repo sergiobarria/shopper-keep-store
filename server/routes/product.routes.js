@@ -4,8 +4,8 @@ const { getAllProducts, getProductById } = require('./product.controller');
 
 const router = express.Router();
 
-router.get('/', getAllProducts);
+router.route('/').get(getAllProducts);
 
-router.get('/:id', getProductById);
+router.route('/:id').get(getProductById);
 
 module.exports = router;

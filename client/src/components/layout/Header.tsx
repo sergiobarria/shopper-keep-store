@@ -23,7 +23,7 @@ export default function Header() {
               <img src={logo} alt='shopper keep logo' />
             </Link>
           </div>
-          <div className='flex space-x-6'>
+          <div className='flex'>
             <Link
               to='/cart'
               className={clsx(
