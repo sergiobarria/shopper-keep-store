@@ -31,4 +31,6 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# ignore dist files from build
 dist
