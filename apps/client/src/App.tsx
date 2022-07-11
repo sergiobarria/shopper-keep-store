@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Products } from '@src/components/Products';
+import { ThemeProvider } from './providers';
 
 export default function App() {
   return (
-    <div>
-      Hello World!
-      <Products />
-    </div>
+    <ThemeProvider>
+      <div>Hello World!</div>
+    </ThemeProvider>
   );
 }

@@ -1,0 +1,39 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc -w",
+    "build:clean": "rm -rf ./dist",
+    "build:ts": "tsc",
+    "build": "yarn build:clean && yarn build:ts",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "yarn lint --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf node_modules dist .turbo"
+  },
+  "dependencies": {
+    "@mantine/core": "^4.2.12",
+    "@mantine/dates": "^4.2.12",
+    "@mantine/form": "^4.2.12",
+    "@mantine/hooks": "^4.2.12",
+    "@mantine/modals": "^4.2.12",
+    "@mantine/notifications": "^4.2.12",
+    "dayjs": "^1.11.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "eslint": "^8.19.0",
+    "eslint-config-custom": "*",
+    "tsconfig": "*",
+    "typescript": "^4.7.4"
+  }
+}
