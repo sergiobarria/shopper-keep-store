@@ -20,12 +20,6 @@ const productListInitialState = {
   products: [],
 };
 
-const productDetailInitialState = {
-  loading: false,
-  error: null,
-  product: undefined,
-};
-
 export const productListReducer = (
   state: ProductsState = productListInitialState,
   action: ProductsActions
@@ -40,6 +34,12 @@ export const productListReducer = (
     default:
       return state;
   }
+};
+
+const productDetailInitialState = {
+  loading: false,
+  error: null,
+  product: undefined,
 };
 
 export const productDetailsReducer = (

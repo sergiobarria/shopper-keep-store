@@ -18,18 +18,20 @@ export default function CartPage() {
     removeFromCart(id);
   }
 
+  function handleCheckout() {
+    navigate('/login?redirect=shipping');
+  }
+
   return (
     <section>
       <h2 className='mb-10 tracking-widest'>Your Cart</h2>
-      {cartItems.length === 0 && (
-        <Message
-          msg='Your cart is empty'
-          textStyles='text-blue-700'
-          bgStyles='bg-blue-300'
-        />
-      )}
-      {cartItems.length > 0 && (
-        <div className='grid grid-cols-12 gap-4'>
+      <div className='grid grid-cols-12 gap-4'>
+        {cartItems.length === 0 && (
+          <div className='col-span-8'>
+            <Message msg='Your cart is empty' type='info' />
+          </div>
+        )}
+        {cartItems.length > 0 && (
           <div className='col-span-12 md:col-span-8'>
             {cartItems.map((item: CartItem) => (
               <div key={item.id}>
@@ -73,27 +75,27 @@ export default function CartPage() {
               </div>
             ))}
           </div>
-          {/* Checkout card */}
-          <div className='col-span-8 border md:col-span-4'>
-            <div className='p-4'>
-              <h3 className='text-gray-700 uppercase'>
-                subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
-              </h3>
-              <p className='text-lg text-gray-700'>
-                $
-                {cartItems
-                  .reduce((acc, item) => acc + item.qty * item.price, 0)
-                  .toFixed(2)}
-              </p>
-            </div>
-            <hr />
+        )}
+        {/* Checkout card */}
+        <div className='col-span-8 border md:col-span-4'>
+          <div className='p-4'>
+            <h3 className='text-gray-700 uppercase'>
+              subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
+            </h3>
+            <p className='text-lg text-gray-700'>
+              $
+              {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}
+            </p>
+          </div>
+          <hr />
 
-            <div className='p-4'>
-              <Button onClick={() => navigate('/login')}>proceed to checkout</Button>
-            </div>
+          <div className='p-4'>
+            <Button onClick={handleCheckout} disabled={cartItems.length === 0 && true}>
+              proceed to checkout
+            </Button>
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }
