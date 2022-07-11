@@ -1,5 +1,6 @@
 {
   "name": "shopper-keep",
+  "description": "Full Stack eCommerce MERN App",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
