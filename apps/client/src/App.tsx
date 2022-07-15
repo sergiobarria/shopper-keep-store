@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { ThemeProvider } from './providers';
+import { AppLayout } from '@src/layout';
+import { ThemeProvider } from '@src/providers';
 
 export default function App() {
   return (
     <ThemeProvider>
-      <div>Hello World! From Shopper Keep</div>
+      <AppLayout>
+        <div>Hello World! From Shopper Keep</div>
+      </AppLayout>
     </ThemeProvider>
   );
 }
