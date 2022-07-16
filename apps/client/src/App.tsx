@@ -1,11 +1,18 @@
-import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-import { ThemeProvider } from './providers';
+import { AppLayout } from '@src/layout';
+import { ThemeProvider } from '@src/providers';
+
+import { AppRoutes } from './routes';
 
 export default function App() {
   return (
     <ThemeProvider>
-      <div>Hello World! From Shopper Keep</div>
+      <BrowserRouter>
+        <AppLayout>
+          <AppRoutes />
+        </AppLayout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

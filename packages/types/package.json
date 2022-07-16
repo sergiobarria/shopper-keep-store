@@ -1,0 +1,28 @@
+{
+  "name": "types",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc -w",
+    "build:clean": "rm -rf ./dist",
+    "build:ts": "tsc",
+    "build": "yarn build:clean && yarn build:ts",
+    "watch": "yarn build -w",
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint:fix": "yarn lint --fix",
+    "typecheck": "tsc --noEmit",
+    "checks": "yarn lint && yarn typecheck",
+    "clean": "rm -rf node_modules dist .turbo"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.15",
+    "typescript": "^4.7.4"
+  }
+}

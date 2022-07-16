@@ -1,0 +1,71 @@
+{
+  "name": "shopper-keep",
+  "description": "Full Stack eCommerce MERN App",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "// bootstrap scripts": "",
+    "bootstrap": "yarn install && yarn build:packages",
+    "// build scripts": "",
+    "build": "turbo run build",
+    "build:client": "turbo run build --filter=./apps/client",
+    "build:packages": "turbo run build --filter=./packages/*",
+    "// start scripts": "",
+    "dev": "turbo run dev --parallel",
+    "dev:client": "turbo run dev --filter=./apps/client",
+    "// format scripts": "",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "// lint scripts": "",
+    "lint": "turbo run lint",
+    "lint:client": "turbo run lint --filter=./apps/client",
+    "lint:types": "turbo run lint --filter=./packages/types",
+    "lint:packages": "turbo run lint --filter=./packages/*",
+    "// typecheck scripts": "",
+    "typecheck": "turbo run typecheck",
+    "typecheck:client": "turbo run typecheck --filter=./apps/client",
+    "typecheck:types": "turbo run typecheck --filter=./packages/types",
+    "// clean scripts": "",
+    "clean:root": "rm -rf ./node_modules",
+    "clean:workspaces": "turbo run clean --force",
+    "clean:packages": "turbo run clean --filter=./packages/* --force",
+    "clean:all": "yarn clean:workspaces && yarn clean:root",
+    "// other scripts": "",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "dotenv": "16.0.1",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.4",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.6.2",
+    "turbo": "latest"
+  },
+  "lint-staged": {
+    "apps/**/src/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "packages/ui/src/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.19"
+}
