@@ -14,8 +14,13 @@
     "clean": {
       "cache": false
     },
+    "create-env": {
+      "inputs": [".env.example"],
+      "outputs": [".env"]
+    },
     "dev": {
       "cache": false
     }
-  }
+  },
+  "globalDependencies": ["tsconfig.json", "tsconfig.base.json", ".env"]
 }

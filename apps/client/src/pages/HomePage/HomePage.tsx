@@ -1,9 +1,21 @@
-import React from 'react';
-import { Box, MantineTheme, Sx, Title, Grid } from '@mantine/core';
+import React, { ReactComponentElement } from 'react';
+import {
+  Box,
+  MantineTheme,
+  Sx,
+  Title,
+  Grid,
+  Loader,
+  Center,
+} from '@mantine/core';
+import { useQuery } from 'react-query';
 
 import { ProductCard } from '@src/shared/components';
+import { getAllProducts } from '@src/shared/services';
 
-import { products } from '@src/shared/constants/products';
+import { Product } from 'types';
+
+// import { products } from '@src/shared/constants/products';
 
 const headingStyles: Sx = (theme: MantineTheme) => ({
   color: theme.colors.dark[6],
@@ -20,6 +32,29 @@ const titleDecorationStyles: Sx = (theme: MantineTheme) => ({
 });
 
 export const HomePage: React.FC = () => {
+  const query = useQuery<Product[]>('products', getAllProducts);
+
+  let content: ReactComponentElement<any> | null = null;
+
+  if (query.isLoading) {
+    content = (
+      <Center sx={{ minHeight: '25rem' }}>
+        <Loader size='xl' color='red' variant='bars' />
+      </Center>
+    );
+  }
+
+  content = (
+    <Grid sx={gridStyles} gutter='xl'>
+      {query.status === 'success' &&
+        query.data.map((product) => (
+          <Grid.Col sm={6} md={4} lg={3} key={product._id}>
+            <ProductCard product={product} />
+          </Grid.Col>
+        ))}
+    </Grid>
+  );
+
   return (
     <React.Fragment>
       <Box>
@@ -30,13 +65,7 @@ export const HomePage: React.FC = () => {
       </Box>
 
       {/* Display Latest Products */}
-      <Grid sx={gridStyles} gutter='xl'>
-        {products.map((product) => (
-          <Grid.Col sm={6} md={4} lg={3} key={product._id}>
-            <ProductCard product={product} />
-          </Grid.Col>
-        ))}
-      </Grid>
+      {content}
     </React.Fragment>
   );
 };

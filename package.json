@@ -17,6 +17,7 @@
     "// start scripts": "",
     "dev": "turbo run dev --parallel",
     "dev:client": "turbo run dev --filter=./apps/client",
+    "dev:server": "turbo run dev --filter=./apps/server",
     "// format scripts": "",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "// lint scripts": "",
@@ -33,6 +34,8 @@
     "clean:workspaces": "turbo run clean --force",
     "clean:packages": "turbo run clean --filter=./packages/* --force",
     "clean:all": "yarn clean:workspaces && yarn clean:root",
+    "// env scripts": "",
+    "create-env": "turbo run create-env",
     "// other scripts": "",
     "prepare": "husky install"
   },

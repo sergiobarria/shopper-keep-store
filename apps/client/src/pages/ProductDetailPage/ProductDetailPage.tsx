@@ -13,12 +13,16 @@ import {
   Divider,
   Group,
   Button,
+  Loader,
 } from '@mantine/core';
-import { products } from '@src/shared/constants/products';
 import { Link as RouterLink, useParams } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { AiFillStar } from 'react-icons/ai';
+
+import { getProductById } from '@src/shared/services';
+import { Product } from 'types';
 
 import * as appRoutes from '@src/shared/constants/routes';
-import { AiFillStar } from 'react-icons/ai';
 
 const linkStyles: Sx = (theme: MantineTheme) => ({
   backgroundColor: theme.colors.dark[6],
@@ -42,12 +46,21 @@ const buttonStyles: Sx = (theme: MantineTheme) => ({
 
 export const ProductDetailPage: React.FC = () => {
   const { productId } = useParams();
+  const { data: product, isLoading } = useQuery<Product>('product', () =>
+    getProductById(productId || '')
+  );
 
   const handleAddToCartClick = () => {
     alert('TODO: Handle Add To Cart');
   };
 
-  const product = products.find((p) => p._id === productId);
+  if (isLoading) {
+    return (
+      <Box sx={{ minHeight: '25rem' }}>
+        <Loader size='xl' color='red' variant='bars' />
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ margin: '2rem 0' }}>
