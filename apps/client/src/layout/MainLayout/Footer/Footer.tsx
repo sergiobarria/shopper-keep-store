@@ -9,7 +9,7 @@ const footerStyles: Sx = {
 
 export const Footer: React.FC = () => {
   return (
-    <MantineFooter height={60} sx={footerStyles}>
+    <MantineFooter height={60} sx={footerStyles} mt={80}>
       <Container size='lg' my={30}>
         <Center>
           Copyright &copy; Shopper Keep Store {new Date().getFullYear()}
