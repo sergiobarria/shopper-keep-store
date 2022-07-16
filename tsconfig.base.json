@@ -1,6 +1,4 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Default",
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
@@ -18,6 +16,5 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es6"
-  },
-  "exclude": ["node_modules"]
+  }
 }
