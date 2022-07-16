@@ -10,7 +10,8 @@
     "lint:fix": "yarn lint --fix",
     "clean": "rm -rf node_modules build .turbo .env",
     "clean:cache": "rm -rf node_modules/.vite",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "create-env": "create-env"
   },
   "dependencies": {
     "@mantine/core": "^4.2.12",
@@ -19,6 +20,7 @@
     "@mantine/hooks": "^4.2.12",
     "@mantine/modals": "^4.2.12",
     "@mantine/notifications": "^4.2.12",
+    "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
