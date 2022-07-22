@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import http from 'http';
+import * as http from 'http';
 
 import dotenv from 'dotenv';
 import colors from 'colors';
@@ -9,7 +9,7 @@ import app from './app';
 
 dotenv.config();
 
-let server;
+let server: http.Server;
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
@@ -23,19 +23,24 @@ function onListening() {
       `
     )
   );
-  // 💾 MongoDB connection ready!
 }
 
 function onError(error: Error) {
-  console.log(`Error: ${error.message}`.red);
+  console.error(`Error: ${error.message}`.red);
 }
 
 async function startServer() {
   server = http.createServer(app);
 
-  server.listen(PORT);
   server.on('listening', onListening);
   server.on('error', onError);
+
+  try {
+    server.listen(PORT);
+  } catch (error: unknown) {
+    console.error(error ?? 'Unknown error');
+    process.exit(1);
+  }
 }
 
 startServer();
