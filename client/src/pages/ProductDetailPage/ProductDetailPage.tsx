@@ -15,8 +15,8 @@ import {
   Button,
   Loader,
 } from '@mantine/core';
-import { Link as RouterLink, useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { Link as RouterLink, useMatch } from '@tanstack/react-location';
+import { useQuery } from '@tanstack/react-query';
 import { AiFillStar } from 'react-icons/ai';
 
 import { getProductById } from '@src/shared/services';
@@ -45,8 +45,10 @@ const buttonStyles: Sx = (theme: MantineTheme) => ({
 });
 
 export const ProductDetailPage: React.FC = () => {
-  const { productId } = useParams();
-  const { data: product, isLoading } = useQuery<Product>('product', () =>
+  const {
+    params: { productId },
+  } = useMatch();
+  const { data: product, isLoading } = useQuery<Product>(['product'], () =>
     getProductById(productId || '')
   );
 

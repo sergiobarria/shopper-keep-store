@@ -8,7 +8,7 @@ import {
   Sx,
   Title,
 } from '@mantine/core';
-import { Link as RouterLink, generatePath } from 'react-router-dom';
+import { Link as RouterLink } from '@tanstack/react-location';
 import { AiFillStar } from 'react-icons/ai';
 
 import { Product } from '@src/shared/types';
@@ -35,7 +35,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <Card
       component={RouterLink}
-      to={generatePath(appRoutes.product, { productId: product._id })}
+      to={appRoutes.homeProductDetail}
+      // to={generatePath(appRoutes.product, { productId: product._id })}
       shadow='lg'
       sx={cardStyles}
     >

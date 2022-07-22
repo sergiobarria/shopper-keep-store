@@ -1,6 +1,10 @@
-// Routes
+// Home Routes
 export const home = '/';
-export const products = '/products';
-export const product = '/products/:productId';
-export const cart = '/cart';
+export const homeProducts = '/products';
+export const homeProductDetail = ':productId';
+
+// User Routes
 export const signIn = '/sign-in';
+
+// Cart Routes
+export const cart = '/cart';

@@ -1,13 +1,13 @@
-import { AppLayout } from '@src/layout';
-import { AppProvider } from '@src/providers';
+import { Outlet } from '@tanstack/react-location';
 
-import { AppRoutes } from './routes';
+import { AppLayout } from '@src/shared/components/layout';
+import { AppProvider } from '@src/providers';
 
 export default function App() {
   return (
     <AppProvider>
       <AppLayout>
-        <AppRoutes />
+        <Outlet />
       </AppLayout>
     </AppProvider>
   );

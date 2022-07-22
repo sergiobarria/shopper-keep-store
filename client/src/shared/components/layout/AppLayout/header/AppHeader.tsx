@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from '@tanstack/react-location';
 import {
   Header as MantineHeader,
   Container,
@@ -46,7 +46,7 @@ const logoStyles: Sx = {
   width: '12.5rem',
 };
 
-export const Header: React.FC = () => {
+export const AppHeader: React.FC = () => {
   return (
     <MantineHeader height={80} sx={headerStyles}>
       <Container size='xl' sx={headerContentLayout}>

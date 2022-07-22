@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 
+import { RouterProvider } from './RouterProvider';
 import { QueryProvider } from './QueryProvider';
 import { ThemeProvider } from './ThemeProvider';
 
@@ -10,10 +10,10 @@ export const AppProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   return (
-    <QueryProvider>
-      <BrowserRouter>
+    <RouterProvider>
+      <QueryProvider>
         <ThemeProvider>{children}</ThemeProvider>
-      </BrowserRouter>
-    </QueryProvider>
+      </QueryProvider>
+    </RouterProvider>
   );
 };

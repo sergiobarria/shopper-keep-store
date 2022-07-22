@@ -7,7 +7,7 @@ const footerStyles: Sx = {
   marginTop: 'auto',
 };
 
-export const Footer: React.FC = () => {
+export const AppFooter: React.FC = () => {
   return (
     <MantineFooter height={60} sx={footerStyles} mt={80}>
       <Container size='lg' my={30}>

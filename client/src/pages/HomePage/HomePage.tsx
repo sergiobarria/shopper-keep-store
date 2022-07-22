@@ -8,7 +8,7 @@ import {
   Loader,
   Center,
 } from '@mantine/core';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { ProductCard } from '@src/shared/components';
 import { getAllProducts } from '@src/shared/services';
@@ -32,7 +32,7 @@ const titleDecorationStyles: Sx = (theme: MantineTheme) => ({
 });
 
 export const HomePage: React.FC = () => {
-  const query = useQuery<Product[]>('products', getAllProducts);
+  const query = useQuery<Product[]>(['products'], getAllProducts);
 
   let content: ReactComponentElement<any> | null = null;
 
