@@ -11,7 +11,7 @@ import {
 import { Link as RouterLink, generatePath } from 'react-router-dom';
 import { AiFillStar } from 'react-icons/ai';
 
-import { Product } from 'types';
+import { Product } from '@src/shared/types';
 
 import * as appRoutes from '@src/shared/constants/routes';
 

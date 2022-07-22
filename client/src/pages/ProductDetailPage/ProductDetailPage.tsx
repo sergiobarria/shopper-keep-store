@@ -20,7 +20,7 @@ import { useQuery } from 'react-query';
 import { AiFillStar } from 'react-icons/ai';
 
 import { getProductById } from '@src/shared/services';
-import { Product } from 'types';
+import { Product } from '@src/shared/types';
 
 import * as appRoutes from '@src/shared/constants/routes';
 

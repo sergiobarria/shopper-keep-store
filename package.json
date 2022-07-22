@@ -1,47 +1,43 @@
 {
   "name": "shopper-keep",
-  "description": "Full Stack eCommerce MERN App",
+  "description": "Full Stack eCommerce MERN Application",
   "version": "0.0.0",
   "private": true,
+  "repository": "git@github.com:sergiobarria/sweet-memories.git",
+  "author": "sergiobarria <sbarria.dev@gmail.com>",
+  "license": "MIT",
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "client",
+    "server"
   ],
   "scripts": {
     "// bootstrap scripts": "",
-    "bootstrap": "yarn install && yarn build:packages",
+    "bootstrap": "yarn install",
     "// build scripts": "",
-    "build": "turbo run build",
-    "build:client": "turbo run build --filter=./apps/client",
-    "build:packages": "turbo run build --filter=./packages/*",
     "// start scripts": "",
-    "dev": "turbo run dev --parallel",
-    "dev:client": "turbo run dev --filter=./apps/client",
-    "dev:server": "turbo run dev --filter=./apps/server",
+    "start": "concurrently \"yarn start:client\" \"yarn start:server\"",
+    "start:client": "cd client && yarn dev",
+    "start:server": "cd server && yarn dev",
     "// format scripts": "",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "// lint scripts": "",
-    "lint": "turbo run lint",
-    "lint:client": "turbo run lint --filter=./apps/client",
-    "lint:types": "turbo run lint --filter=./packages/types",
-    "lint:packages": "turbo run lint --filter=./packages/*",
+    "lint:client": "cd client && yarn lint",
+    "lint:server": "cd server && yarn lint",
+    "lint": "yarn lint:client && yarn lint:server",
     "// typecheck scripts": "",
-    "typecheck": "turbo run typecheck",
-    "typecheck:client": "turbo run typecheck --filter=./apps/client",
-    "typecheck:types": "turbo run typecheck --filter=./packages/types",
     "// clean scripts": "",
     "clean:root": "rm -rf ./node_modules",
-    "clean:workspaces": "turbo run clean --force",
-    "clean:packages": "turbo run clean --filter=./packages/* --force",
-    "clean:all": "yarn clean:workspaces && yarn clean:root",
+    "clean:client": "cd client && rm -rf ./node_modules",
+    "clean:server": "cd server && rm -rf ./node_modules",
+    "clean:all": "yarn clean:root && yarn clean:client && yarn clean:server",
     "// env scripts": "",
-    "create-env": "turbo run create-env",
     "// other scripts": "",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
+    "concurrently": "^7.3.0",
     "dotenv": "16.0.1",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
@@ -52,18 +48,14 @@
     "eslint-plugin-react": "^7.30.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "prettier": "2.6.2",
-    "turbo": "latest"
+    "prettier": "2.6.2"
   },
   "lint-staged": {
-    "apps/**/src/**/*.{js,ts,jsx,tsx}": [
+    "client/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ],
-    "packages/ui/src/**/*.{js,ts,jsx,tsx}": [
+    "server/**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
-    ],
-    "*.json": [
-      "prettier --write"
     ]
   },
   "engines": {

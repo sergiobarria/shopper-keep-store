@@ -13,7 +13,7 @@ import { useQuery } from 'react-query';
 import { ProductCard } from '@src/shared/components';
 import { getAllProducts } from '@src/shared/services';
 
-import { Product } from 'types';
+import { Product } from '@src/shared/types';
 
 // import { products } from '@src/shared/constants/products';
 
