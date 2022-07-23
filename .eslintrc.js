@@ -29,6 +29,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    '@typescript-eslint/no-unused-vars': [WARN],
     'no-console': [WARN, { allow: ['error', 'info'] }],
     'no-unused-vars': [WARN],
     'react/prop-types': OFF,

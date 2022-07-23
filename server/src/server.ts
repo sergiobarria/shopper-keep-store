@@ -1,10 +1,10 @@
-/* eslint-disable no-console */
-
 import * as http from 'http';
 
 import dotenv from 'dotenv';
-import colors from 'colors';
+import 'colors';
 
+import { mongoConnect } from './lib';
+import { logger } from './utils';
 import app from './app';
 
 dotenv.config();
@@ -15,30 +15,28 @@ const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
 
 function onListening() {
-  console.log(
-    colors.green.bold(
-      `
-      🚀 Express server running on ${ENV}!
-      🔉 Listening on port: ${PORT}
-      `
-    )
+  logger.info(
+    `Express server running on port ${PORT} in ${ENV} mode`.green.inverse
   );
 }
 
 function onError(error: Error) {
-  console.error(`Error: ${error.message}`.red);
+  logger.error(`Error: ${error.message}`.red);
 }
 
 async function startServer() {
   server = http.createServer(app);
+
+  // Connect MongoDB
+  await mongoConnect();
 
   server.on('listening', onListening);
   server.on('error', onError);
 
   try {
     server.listen(PORT);
-  } catch (error: unknown) {
-    console.error(error ?? 'Unknown error');
+  } catch (error: any) {
+    logger.error(`Error: ${error.message}`.red);
     process.exit(1);
   }
 }
