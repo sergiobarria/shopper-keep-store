@@ -1,12 +1,21 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 
-import { products } from './data/products';
+import { notFound, errorHandler } from './middleware';
+
+// Import Routes
+import * as apiRoutes from '@api/shared/constants/routes';
+import { productsRouter } from '@api/modules/products';
 
 const app = express();
 
 // APP MIDDLEWARE
 app.use(express.json());
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use(
   cors({
@@ -14,20 +23,18 @@ app.use(
   })
 );
 
-app.get('/', (req: Request, res: Response) => {
-  return res.status(200).json({ 'Server Status': 'OK' });
+// ROUTES
+// Healthcheck route
+app.get(apiRoutes.HEALTHCHECK_ROUTE, (req: Request, res: Response) => {
+  res.status(200).json({
+    API_STATUS: 'OK',
+  });
 });
 
-app.get('/api/v1/products', (req: Request, res: Response) => {
-  res.json(products);
-});
+app.use(apiRoutes.PRODUCTS_BASE_ROUTE, productsRouter);
 
-app.get('/api/v1/products/:id', (req: Request, res: Response) => {
-  const { id } = req.params;
+app.use(notFound);
 
-  const product = products.find((product) => product._id === id);
-
-  res.json(product);
-});
+app.use(errorHandler);
 
 export default app;

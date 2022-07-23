@@ -32,7 +32,9 @@
     "clean:all": "yarn clean:root && yarn clean:client && yarn clean:server",
     "// env scripts": "",
     "// other scripts": "",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "data:import": "cd server && yarn data:import",
+    "data:destroy": "cd server && yarn data:destroy"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.30.6",
